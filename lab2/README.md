@@ -69,18 +69,6 @@ Remember that in the nim game the nim sum shall always be != 0 for a winner move
      ![Screenshot](./result_images/start3.png)
      ![Screenshot](./result_images/end3.png)
      ![Screenshot](./result_images/graph3.png)
-- Setting4:
-   - NUM_EPOCH = 200
-   - NUM_GAMES = 50
-   - GAME_ROWS = 5
-   - λ = 9
-   - initial_σ = 0.018
-   - final_σ = 0.015
-   - σ = initial_σ
-   - result:
-     ![Screenshot](./result_images/start4.png)
-     ![Screenshot](./result_images/end4.png)
-     ![Screenshot](./result_images/graph4.png)
 
 
 ### Other materials:

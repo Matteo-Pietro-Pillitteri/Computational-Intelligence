@@ -40,7 +40,9 @@ Remember that in the nim game the nim sum shall always be != 0 for a winner move
    - final_σ = 0.001
    - σ = initial_σ
    - result:
-     ![Alt text](/posts/path/to/img.jpg)
+     ![Alt text](/result_images/start.png)
+     ![Alt text](/result_images/end.png)
+     ![Alt text](/result_images/graph.png)
 
 ### Other materials:
 - https://numpy.org/doc/stable/reference/generated/numpy.clip.html

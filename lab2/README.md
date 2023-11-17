@@ -31,7 +31,9 @@ Progressively with the passing of the eras and therefore of the generations, the
 Remember that in the nim game the nim sum shall always be != 0 for a winner move. My last rule checks if there are moves that bring to a nim sum == 0 and if this rule is selected, the associated action (notoptimal_move) return a move that brings to a nim sum == 0. It is possible to see over the epochs that the weight associated with this last rule is increasingly lower
 
 #Some results:
-- Setting:
+> [!NOTE]
+> The settings shown below are just two of several parameter settings I tried. The last two days of work were exclusively on parameter tuning. Suggestions on how to best manage variance are very welcome
+- Setting1:
    - NUM_EPOCHS = 100 
    - NUM_GAMES = 60 
    - GAME_ROWS = 5
@@ -43,6 +45,14 @@ Remember that in the nim game the nim sum shall always be != 0 for a winner move
      ![Screenshot](./result_images/start.png)
      ![Screenshot](./result_images/end.png)
      ![Screenshot](./result_images/graph.png)
+- Setting2:
+   - NUM_EPOCH = 100
+   - NUM_GAMES = 60
+   - GAME_ROWS = 5
+   - λ = 30
+   - initial_σ = 0.017
+   - final_σ = 0.01
+   - σ = initial_σ
 
 ### Other materials:
 - https://numpy.org/doc/stable/reference/generated/numpy.clip.html

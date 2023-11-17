@@ -31,6 +31,7 @@ Progressively with the passing of the eras and therefore of the generations, the
 Remember that in the nim game the nim sum shall always be != 0 for a winner move. My last rule checks if there are moves that bring the to a nim sum == 0 and if this rule is selected, the associated action (notoptimal_move) return a move that brings to a nim sum == 0. It is possible to see over the epochs that the weight associated with this last rule is increasingly lower
 
 ### Other materials:
+- https://numpy.org/doc/stable/reference/generated/numpy.clip.html
 - https://www.geeksforgeeks.org/graph-plotting-in-python-set-1/
 - https://www.programiz.com/python-programming/methods/built-in/zip
 

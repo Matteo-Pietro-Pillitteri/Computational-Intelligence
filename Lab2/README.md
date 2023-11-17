@@ -12,4 +12,7 @@ The code in the repository "Lab2" implements an Adaptive (1+λ)-ES that has the 
 - Understand ESs: After having theoretically learned the theory on evolution strategies, I understood the implementation logic of algorithms based on the plus strategy.
   - The code of Squillero: https://github.com/squillero/computational-intelligence/blob/master/2023-24/rastrigin.ipynb helped me a lot!
   - Usefull read:  Essentials of Metaheuristics, A Set of Undergraduate Lecture Notes by Sean Luke (Second Edition), chapter 3.1
-- Start to code 
+- Start to code: first of all i designed a set of rules and a set of actions. Each rule returns True or False depends on whether the condition is satisfied or not. I assigned one action to one rule and then i try if the algorithm was able to play against other strategies:
+  - a set of games is composed by 100 games. Player 1 plays always with the my strategy (called adaptive) while Player0 plays with different strategy. In particular, Player0 changes the strategy for each 20 games. At the half ot the set of games, the opponent will play always with the optimal strategy (based on nim sum). This variety will help the tuning in the next steps.
+  - each game keeps track about the winner with a simple counter
+  - At the end, the fitness will be: $/number of games in which player1 is the winner/total number of games 

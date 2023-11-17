@@ -1,5 +1,5 @@
 # LAB 02 NIM-ES
-## Matteo Pietro Pillitteri s314404 polytechnic of turin
+## Matteo Pietro Pillitteri s314404 Polytechnic of Turin
 
 ### Brief introduction
 The code in the repository "Lab2" implements an Adaptive (1+λ)-ES that has the goal to tune a set of weights. The tuining is useful in order to develop a game strategy that uses a fixed set of rules each used with probability proportional to these weights. See below for more details.

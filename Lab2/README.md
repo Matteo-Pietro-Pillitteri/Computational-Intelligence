@@ -27,6 +27,9 @@ The code in the repository "Lab2" implements an Adaptive (1+λ)-ES that has the 
 - Exploration vs exploitation: to be honest, the most difficult thing was to tune λ and the mutation step σ. Manually i tried different values of σ for obtaining an improvment. At the beginning i kept it constant but i found the best results with an **adaptive** approach. So i decided to favor exploration by using an higher value of sigma at the beginning. This allowed the algorithm to explore more in the space.
 Progressively with the passing of the eras and therefore of the generations, the mutation steps decrease according to the formula: "σ=max(final_σ,initial_σ−(initial_σ−final_σ)×(epoch/ NUM_EPOCHS))". This formula ensures that σ does not fall below the final set value. Thus, as the sigma decreases, exploitation is favored.
 
+### Trick:
+Remember that in the nim game the nim sum shall always be != 0 for a winner move. My last rule checks if there are moves that bring the to a nim sum == 0 and if this rule is selected, the associated action (notoptimal_move) return a move that brings to a nim sum == 0. It is possible to see over the epochs that the weight associated with this last rule is increasingly lower
+
 ### Other materials:
 - https://www.geeksforgeeks.org/graph-plotting-in-python-set-1/
 - https://www.programiz.com/python-programming/methods/built-in/zip

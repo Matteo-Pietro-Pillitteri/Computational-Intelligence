@@ -32,7 +32,7 @@ Remember that in the nim game the nim sum shall always be != 0 for a winner move
 
 #Some results:
 > [!NOTE]
-> The settings shown below are just two of several parameter settings I tried. The last two days of work were exclusively on parameter tuning. Suggestions on how to best manage variance are very welcome
+> The settings shown below are just some of several parameter settings I tried. The last two days of work were exclusively on parameter tuning. Suggestions on how to best manage variance are very welcome
 - Setting1:
    - NUM_EPOCHS = 100 
    - NUM_GAMES = 60 
@@ -53,6 +53,22 @@ Remember that in the nim game the nim sum shall always be != 0 for a winner move
    - initial_σ = 0.017
    - final_σ = 0.01
    - σ = initial_σ
+   - result:
+     ![Screenshot](./result_images/start2.png)
+     ![Screenshot](./result_images/end2.png)
+     ![Screenshot](./result_images/graph2.png)
+- Setting3:
+   - NUM_EPOCH = 100
+   - NUM_GAMES = 60
+   - GAME_ROWS = 5
+   - λ = 30
+   - initial_σ = 0.017
+   - final_σ = 0.01
+   - σ = initial_σ
+   - result:
+     ![Screenshot](./result_images/start3.png)
+     ![Screenshot](./result_images/end3.png)
+     ![Screenshot](./result_images/graph3.png)
 
 ### Other materials:
 - https://numpy.org/doc/stable/reference/generated/numpy.clip.html

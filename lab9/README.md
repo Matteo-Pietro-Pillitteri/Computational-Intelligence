@@ -15,7 +15,7 @@ See below for more details.
   - Recombination + Mutation:
     ![Screenshot](./images/recplusmut.png)
   - Recombination vs Mutation:
-    ![Screenshot](./images/recvsmut.png)
+    ![Screenshot](./images/recormut.png)
     Modern GA algorithms are based on  this second strategy using crossover or mutation according to some probability. Here you can find a basic implementation based on this approach: https://github.com/squillero/computational-intelligence/blob/master/2023-24/set-covering_ea.ipynb
 - Start to code: as I said, I tried several strategies such as: Steady state GA, Generational GA, **Generetional GA + Elitism** and some GA variants like the Islands Model
   - I found Generational GA + Elitism the best one in optimizing fitness and minimizing fitness calls:

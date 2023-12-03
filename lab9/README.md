@@ -81,3 +81,8 @@ for this reason I implemented different types of mutation:
 - Problem instance 10: (41.25% fitness - 1080190 fitness calls):
      - ![Screenshot](./images/GRAPH10.png)
      - ![Screenshot](./images/PREST10.png)
+ 
+### Useful reads:
+   - Essentials of Metaheuristics, Sean Luke, Second Edition - Chapters 3.2, 3.3
+   - https://www.geeksforgeeks.org/mutation-algorithms-for-string-manipulation-ga/
+   - https://medium.com/@samiran.bera/crossover-operator-the-heart-of-genetic-algorithm-6c0fdcb405c0

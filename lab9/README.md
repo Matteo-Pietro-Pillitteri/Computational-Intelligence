@@ -9,7 +9,7 @@ See below for more details.
 
 ### The steps that led me to a solution:
 
-- **You must understand that there is nothing to understand**: it very important to understand that the make_problem function is a blackbox that provide you the fitness metric to evaluate your individuals. Everything you need to take the first steps into the problem:
+- **You must understand that there is nothing to understand about the problem generator**: it very important to understand that the make_problem function is a blackbox that provide you the fitness metric to evaluate your individuals. Everything you need to take the first steps into the problem:
    - the individual's genome is encoded as a bit string
    - choose the strategy
    
@@ -22,16 +22,22 @@ See below for more details.
     
 - Start to code: as I said, I tried several strategies such as: Steady state GA, Generational GA, **Generetional GA + Elitism** and some GA variants like the Islands Model
   - I found Generational GA + Elitism the best one in optimizing fitness and minimizing fitness calls:
-    - Generational:
-    - Elitism:
-  - Parameter tuning
+    - Generational: in a Generational GA in each generation a new population is created by selecting the parents and then applying genetic operatiors. The new generation of individuals replaces the old generation completely. 
+    - Elitism: is a strategy used in GA for preserving the best individuals from one generation to the next. Hence, a certain number of the best performing individuals from the current generation are directly copied in the next generation without any change
+  
+  - Parameter tuning: As always, when working with Evolutionary algorithms, the choice of parameters is difficult. I tried many values for population size, tournament size and mutation probability and after several attempts I found that the best configuration for the basic parameters of my algorithm is the following:
+    - POPULATION_SIZE = 100
+    -  TOURNAMENT_SIZE = 2
+    - MUTATION_PROBABILITY = 0.10
+    - STOP = 4500 (if the 100% fitness value is not reached indicates a stop condition in terms of number of generations)
 
-- Exploration vs exploitation: The **mutation rate** in a Genetic Algorithm plays a crucial role in balancing the exploration and exploitation of the solution space. Exploration refers to the ability to discover new regions of the solution space, while exploitation concerns the refinement of existing solutions.
+- Exploration vs exploitation: the the percentage by which mutation or recombination is chosen in a Genetic Algorithm plays a crucial role in balancing the exploration and exploitation of the solution space. Exploration refers to the ability to discover new regions of the solution space, while exploitation concerns the refinement of existing solutions.
 **Dynamic adaptation** of the mutation rate can be useful. Generally speaking:
-  - A higher mutation rate promotes exploitation: mutation operator is tweaking a solution so it does exploitation
+  - A higher mutation rate promotes exploitation: mutation operator is tweaking a solution so it does exploitation. 
   - A lower mutation rate favors exploration: crossover operator allow you to jump in a different place so it doeas exploration
     
-- **Diversity is all you need**: Using a variety of mutation operators can help improve exploration. For example, you can have mutations that introduce small variations, as well as more aggressive mutations. At an certain point In the population there are a lot of clones of the same individual and the only way to increase the diversity and keep on evoling in this situation is adding something new by the mutation becouse with the crossover if we swap to identical individual you get an identical individual. 
+- **Diversity is all you need**: If you have different individuals with the same traits and you mix the traits you end up with something that has the same traits, so recombination in this case doesn’t work. If all the individuals are similar they are not able to create differences anymore. In brief, If there are not enough differences, recombination doesn’t work! 
+Using a variety of mutation operators can help improve diverity. For example, you can have mutations that introduce small variations, as well as more aggressive mutations. At an certain point In the population there are a lot of clones of the same individual and the only way to increase the diversity and keep on evoling in this situation is adding something new by the mutation becouse with the crossover if we swap to identical individual you get an identical individual. 
 
 ### Some results:
 > [!NOTE]
@@ -41,18 +47,18 @@ See below for more details.
 > - probabilities by which different mutation or recombination operators are selected 
 > Anyway the results do not vary much with each run of the algorithm with the same values for the parameters of POPULATION SIZE, MUTATION PROBABILITY, TOURNAMENT SIZE
 
-- Problem instance 1:
+- Problem instance 1 (100% fitness - 14050 fitness calls):
      - ![Screenshot](./images/GRAPH1.png)
      - ![Screenshot](./images/PREST1.png)
   
-- Problem instance 2:
+- Problem instance 2 (100% fitness - 54460 fitness calls):
      - ![Screenshot](./images/GRAPH2.png)
      - ![Screenshot](./images/PREST2.png)
   
-- Problem instance 5:
+- Problem instance 5: (86% fitness - 1080190 fitness calls):
      - ![Screenshot](./images/GRAPH5.png)
      - ![Screenshot](./images/PREST5.png)
   
-- Problem instance 10:
+- Problem instance 10: (41.25% fitness - 1080190 fitness calls):
      - ![Screenshot](./images/GRAPH10.png)
      - ![Screenshot](./images/PREST10.png)

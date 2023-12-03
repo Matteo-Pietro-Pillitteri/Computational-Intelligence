@@ -47,8 +47,12 @@ for this reason I implemented different types of mutation:
    - reverse mutation
    - random resetting
    - scramble mutation
-At first I tried to use these types of mutations randomly to promote greater diversity. In the final solution of my algorithm I used 4 in a more intelligent way. Anyway I left all the mutation operators implemented in a specific section of my code so that you can use them in your algorithm.
-
+At first I tried to use these types of mutations randomly to promote greater diversity. In the final solution of my algorithm I use 4 in a more stable way. Anyway I left all the mutation operators implemented in a specific section of my code so that you can use them in your algorithm.
+I implemented also different kind of crossover: one-cut, two-cut, n-point-crossover, uniform-crossover. In the final version of my code I use two-cut and one-cut. 
+In my code it is possible to see that i use this two lists:
+     - mut = [mutation, swap_mutation, reverse_mutation, scramble_mutation]
+     - crossover = [two_cut_xover, one_cut_xover]
+During the generation of the new population I select from time to time different operators as you can see in the code
 
 ### Some results:
 > [!NOTE]

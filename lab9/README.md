@@ -9,7 +9,7 @@ See below for more details.
 
 ### The steps that led me to a solution:
 
-- **You must understand that there is nothing to understand about the problem generator**: it very important to understand that the make_problem function is a blackbox that provide you the fitness metric to evaluate your individuals. Everything you need to take the first steps into the problem:
+- **You must understand that there is nothing to understand about the problem generator**: it very important to understand that the make_problem function is a blackbox that provide you the fitness metric to evaluate your individuals. Everything you need to know for taking the first steps into the problem:
    - the individual's genome is encoded as a bit string
    - choose the strategy
    

@@ -15,10 +15,11 @@ See below for more details.
    
 - Explore the possibilities: I choosed to work with Genetic algorithm (GA)  After having theoretically learned the theory on GA, I understood the implementation logic and i tried different kind of GA. There are two main approaches:
   - Recombination + Mutation:
-    ![Screenshot](./images/recplusmut.png)
+     - ![Screenshot](./images/recplusmut.png)
   - Recombination vs Mutation:
-    ![Screenshot](./images/recormut.png)
-    Modern GA algorithms are based on  this second strategy using crossover or mutation according to some probability. Here you can find a basic implementation based on this approach: https://github.com/squillero/computational-intelligence/blob/master/2023-24/set-covering_ea.ipynb
+     - ![Screenshot](./images/recormut.png)
+       
+  Modern GA algorithms are based on  this second strategy using crossover or mutation according to some probability. Here you can find a basic implementation based on this approach: https://github.com/squillero/computational-intelligence/blob/master/2023-24/set-covering_ea.ipynb
     
 - Start to code: as I said, I tried several strategies such as: Steady state GA, Generational GA, **Generetional GA + Elitism** and some GA variants like the Islands Model
   - I found Generational GA + Elitism the best one in optimizing fitness and minimizing fitness calls:
@@ -47,12 +48,15 @@ for this reason I implemented different types of mutation:
    - reverse mutation
    - random resetting
    - scramble mutation
-At first I tried to use these types of mutations randomly to promote greater diversity. In the final solution of my algorithm I use 4 in a more stable way. Anyway I left all the mutation operators implemented in a specific section of my code so that you can use them in your algorithm.
-I implemented also different kind of crossover: one-cut, two-cut, n-point-crossover, uniform-crossover. In the final version of my code I use two-cut and one-cut. 
-In my code it is possible to see that i use this two lists:
+  
+   At first I tried to use these types of mutations randomly to promote greater diversity. In the final solution of my algorithm I use 4 in a more stable way. Anyway I left all the mutation operators implemented in a specific section of my code so that you can use them in your algorithm.
+   I implemented also different kind of crossover: one-cut, two-cut, n-point-crossover, uniform-crossover. In the final version of my code I use two-cut and one-cut. 
+   
+   In my code it is possible to see that i use this two lists:
      - mut = [mutation, swap_mutation, reverse_mutation, scramble_mutation]
      - crossover = [two_cut_xover, one_cut_xover]
-During the generation of the new population I select from time to time different operators as you can see in the code
+       
+   During the generation of the new population I select from time to time different operators as you can see in the code.
 
 ### Some results:
 > [!NOTE]

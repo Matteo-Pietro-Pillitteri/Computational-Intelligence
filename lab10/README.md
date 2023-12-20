@@ -33,4 +33,6 @@ See below for more details.
      - ![Screenshot]
  
 ### Useful reads:
+- Essentials of Metaheuristics, Sean Luke, Second Edition V 2.3, Chapter 10.1.1 Q-Learning
+- Reinforcement Learning, Richard S.Sutton & Andrew G. Bardo, Second Edition, Chapter 6.5 Q-Learning: Off-policy TD Control
   

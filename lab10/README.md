@@ -18,8 +18,8 @@ See below for more details.
    - The agent stores a **Q-Table**: a function Q(s,a) over every possible state "s" and action "a" that could be performed in that state
    - The agent performs an action "a" in a given state "s" and it will then transition to another state s'. It also receives a reward R(s, a) as a result.
    - A **model-free** learning algorithm: it is an algorithm that learns directly from interacting with the environment without having an explicit representation of the environment's model.
-   - The **Q-Table** is updated as: 
-     ![Screenshot] images/q_table_update
+   - The **Q-Table** is updated as: <br>
+     ![Screenshot](./images/q_table_update.png)
        
   
     

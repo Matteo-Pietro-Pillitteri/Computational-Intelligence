@@ -29,6 +29,8 @@ See below for more details.
   - As you can see from the formula of Q learning it is important to make an estimate of the maximum value obtainable from the state St+1. In a context where two players alternate, it becomes difficult to consider the St+1 status. <br>
     In my code, before to upload the Q-table for a specific state and action, with the lines:
     ```python
+     new_state, reward, done, info = env.step(action)
+     ...
      outcomes_from_future = env.evaluate_possible_outcome(new_state)
      Q_S_t_next = 0 if not outcomes_from_future else outcomes_from_future
     ```

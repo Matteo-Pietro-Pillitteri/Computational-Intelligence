@@ -40,7 +40,7 @@ See below for more details.
       - reward:  0 <br>
       - new:  State(x={1, 3, 7}, o={8, 5}) <br>
       - possible_outcomes:  [{8, 2, 5}, {8, 5, 6}, {8, 9, 5}, {8, 4, 5}] <br>
-      - possible_outcomes_values**:  [1, 0, 0, 0] <br>
+      - possible_outcomes_values:  [1, 0, 0, 0] <br>
       
       this means that if in the next state "O" chooses 5 as an action, it will win. So what I do is penalize X’s choice to choose action 1 in the state x={3, 7}  o={8, 5} 
   

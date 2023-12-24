@@ -6,7 +6,7 @@ The code in the repository "lab10" implements  Q-learning algorithm that learns 
 See below for more details.
 > [!IMPORTANT]
 > I worked alone for this lab, I did my best and I am grateful to receive advice to improve the solution and learn more.
-
+> By the way, it was very helpful to confront [Rita](https://github.com/class1c-j/polito-ci-labs/tree/main) to understand the difficulties involved in interpreting Q(St+1, a) in the context of a game in which 2 players take part
 ### The steps that led me to a solution:
 
 - Study the proposed Montecarlo Approach to learn a game strategy in Tic Tac Toe: https://github.com/squillero/computational-intelligence/blob/master/2023-24/lab10-gx.ipynb

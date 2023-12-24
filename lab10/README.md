@@ -23,9 +23,25 @@ See below for more details.
    - The **Q-Table** is updated as: <br>
      ![Screenshot](./images/q_table_update.png)
        
-  
-    
-- Start to code:
+- Implementation details:
+  - The TicTacToeEnvironment class contains everything you need to start a new game, manage player switching, detect a win, apply a new action and return rewards.
+  - As you can see from the formula of Q learning it is important to make an estimate of the maximum value obtainable from the state St+1. In a context where two players alternate, it becomes difficult to consider the St+1 status. <br>
+    In my code, before to upload the Q-table for a specific state and action, with the lines:
+    ```python
+     outcomes_from_future = env.evaluate_possible_outcome(new_state)
+     Q_S_t_next = 0 if not outcomes_from_future else outcomes_from_future
+    ```
+   
+      I’m saying that for example if X is in x={3, 7} or ={8, 5} and it chooses 1 as the action, the situation will be: <br>
+      - available: [2, 6, 9, 1, 4] <br>
+      - current**:  State(x={3, 7}, o={8, 5}) <br>
+      - info**: {'The player: X ,does action: 1'} <br>
+      - reward**:  0 <br>
+      - new**:  State(x={1, 3, 7}, o={8, 5}) <br>
+      - possible_outcomes**:  [{8, 2, 5}, {8, 5, 6}, {8, 9, 5}, {8, 4, 5}] <br>
+      - possible_outcomes_values**:  [1, 0, 0, 0] <br>
+      
+      this means that if in the next state "O" chooses 5 as an action, it will win. So what I do is penalize X’s choice to choose action 1 in the state x={3, 7}  o={8, 5} 
   
   
 - Exploration vs exploitation:
@@ -51,7 +67,8 @@ See below for more details.
   - Random player wins: 2.76%
   - Drawn: 6.54%
  
-- Gameplay:
+- Gameplay: Q-learning agent (X) vs Random (O) <br>
+  ![](https://github.com/Matteo-Pietro-Pillitteri/Computational-Intelligence/blob/main/lab10/images/gameplay_tic_tac_toe.gif)
   
  
 ### Useful reads:

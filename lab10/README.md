@@ -4,7 +4,7 @@
 ### Brief introduction
 - The code lab10.ipynb in the repository "lab10" implements  Q-learning algorithm that learns the best move to apply in each turn in the game of Tic Tac Toe
 See below for more details.
-- The file tic_tac_toe_training_debug.log is a log file that shows some details of my training <br>
+- The  tic_tac_toe_training_debug.zip contains a log file that shows some details of my training <br>
   ([Learn more on the logging facility for Python here!](https://docs.python.org/3/library/logging.html))
 > [!IMPORTANT]
 > I worked alone for this lab, I did my best and I am grateful to receive advice to improve the solution and learn more.
@@ -50,6 +50,9 @@ See below for more details.
   - Q-learning agent wins 90.7%
   - Random player wins: 2.76%
   - Drawn: 6.54%
+ 
+- Gameplay:
+  
  
 ### Useful reads:
 - Essentials of Metaheuristics, Sean Luke, Second Edition V 2.3, Chapter 10.1.1 Q-Learning

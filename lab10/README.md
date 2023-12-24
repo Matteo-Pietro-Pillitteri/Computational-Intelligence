@@ -9,6 +9,7 @@ See below for more details.
 > [!IMPORTANT]
 > I worked alone for this lab, I did my best and I am grateful to receive advice to improve the solution and learn more.
 > By the way, it was very helpful to confront [Rita](https://github.com/class1c-j/polito-ci-labs/tree/main) to understand the difficulties involved in interpreting Q(St+1, a) in the context of a game in which 2 players take part
+
 ### The steps that led me to a solution:
 
 - Study the proposed Montecarlo Approach to learn a game strategy in Tic Tac Toe: https://github.com/squillero/computational-intelligence/blob/master/2023-24/lab10-gx.ipynb
@@ -53,12 +54,9 @@ See below for more details.
      - learning rate: The parameter α determines the "speed" at which the agent updates Q based on new information.
      - discount rate: The discount rate determines how much value to give to future rewards versus immediate rewards. A value close to 1 implies that the agent gives a lot of weight to future rewards, while a value close to 0 indicates that the agent mainly considers immediate rewards.
    
-
  
 ### Some results:
 >[!NOTE]
-> Trying my code you might get different results from the ones below. This depends on several factors: 
-> Anyway the results do not vary much with each run of the algorithm with the same values for the parameters of . . .
 
 - Training over 20_000 episodes: <br>   ![Screenshot](./images/avg_reward.png)
 

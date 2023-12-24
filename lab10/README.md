@@ -56,7 +56,6 @@ See below for more details.
    
  
 ### Some results:
->[!NOTE]
 
 - Training over 20_000 episodes: <br>   ![Screenshot](./images/avg_reward.png)
 

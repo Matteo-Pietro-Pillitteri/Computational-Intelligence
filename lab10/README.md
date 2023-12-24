@@ -33,6 +33,7 @@ See below for more details.
      ...
      outcomes_from_future = env.evaluate_possible_outcome(new_state)
      Q_S_t_next = 0 if not outcomes_from_future else outcomes_from_future
+     q_table[state_str][action] = q_table[state_str][action] * (1- learning_rate) + learning_rate * (reward + discount_rate * (-1.0 *np.max(Q_S_t_next)))
     ```
    
       I’m saying that for example if X is in x={3, 7} or ={8, 5} and it chooses 1 as the action, the situation will be: <br>

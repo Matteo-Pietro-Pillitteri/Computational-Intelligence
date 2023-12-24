@@ -62,7 +62,7 @@ See below for more details.
 
 - Training over 20_000 episodes: <br>   ![Screenshot](./images/avg_reward.png)
 
-- Test over 50_000 episodes in which: X = Q_learning agent ; O r= random player:
+- Test over 5_000 episodes in which: X = Q_learning agent ; O r= random player:
   - Q-learning agent wins 90.7%
   - Random player wins: 2.76%
   - Drawn: 6.54%

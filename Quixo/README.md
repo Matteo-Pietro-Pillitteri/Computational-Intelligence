@@ -64,18 +64,20 @@ The evaluation of an intermediate node is possible thanks to the longest_sequenc
 **Results**
 As we said, we set a limit in depth. The following results represent the percentage of time in which our agent is winning against a Random Player with different depths. The number of games played is not so big, so you can not appreciate a lot the fact that if we explore more depth in the tree we can have better results.
 
-- depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
-![!Screenshot](./results_images/MinMax_d1_30g.jpg)
+- depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5:
+   - ![!Screenshot](./results_images/MixMax_d1_30g.jpg)
 
-
-- depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+- depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+   - ![!Screenshot](./results_images/MixMax_d2_30g.jpg)
 
 - depth = 2 W=1, L=-1, 10 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
-
-- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+   - ![!Screenshot](./results_images/MinMax_d2_10g.png)
+     
+- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+   - ![!Screenshot](./results_images/MinMax_d3_30g.jpg)
 
 - depth = 2 W=1, L=-1, 5 games,ONE random game to decide the value of an intermediate node (3h around on Colab)
-
+   - ![!Screenshot](./results_images/MinMax_d2_5g.png)
 
 
 ### AlphaBetaPrunuing
@@ -87,6 +89,16 @@ Also in this case it is possible to establish a depth where end our exploration.
 **Other usefull methods in MyGame Class**
 
 **Results**
+- depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+
+- depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+
+- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+
+- depth = 4 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+
+- depth = 4 W=1, L=-1, 9 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 (around 25m)
+9 wins -> 100% win
 
 
 ### MonteCarlo RL
@@ -105,18 +117,9 @@ In particular the functions implemented are:
     
 - `get_symmetries(self)`
   - it calculate all the possible symmetries of the board
-
+ 
+- To keep the q table, we use a dictionary. For that we implement the `__hash__` and `__eq__` functions for the `MyGame` function so we can use those objects as part of the key. Additionally, we also use these functions to match elements that are symetries/rotations of the original board, for efficiency.
 **Results**
-- depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
-
-- depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
-
-- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
-
-- depth = 4 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
-
-- depth = 4 W=1, L=-1, 9 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 (around 25m)
-9 wins -> 100% win
 
 ### Q-Learning
 
@@ -137,13 +140,29 @@ In particular the functions implemented are:
 | Icrease opponent's biggest sequence  | - 0.25 * size of board |
 | Decrease opponent's biggest sequence | + 0.25 * size of board |
 
-**usefull methods**
+**Other usefull methods in MyGame Class**
+
+- To keep the q table, we use a dictionary. For that we implement the `__hash__` and `__eq__` functions for the `MyGame` function so we can use those objects as part of the key.
 
 **Results**
 
 
 ###  ES 1+λ
-The code in the file .....ipynb
+The code in the file Quixo_ES.ipynb
+The Evolutionary Strategy is an approach that allows to select the individual that performs better in a specific task. In our case we are looking to the best one that plays well the match against Random Player. We adopted a (1+λ)-ES that in each epoch generates λ offspring from a parent and that evaluates all of them with a fitness function. How does our agent work? It has a list of rule-action couples, each of one has a weight that represents a probability.
+The list of rule-action couples is the following, where some couples are more specific than others:
+- r1-a1: if there is a row without a cube with agent's face, then it pushes the cube there (it is a guarantee that on every row there is at least one agent's cube)
+- r2-a2: if there is a column without a cube with agent's face, then it pushes the cube there (it is a guarantee that on every column there is at least one agent's cube)
+- r3-a3: 
+...
+- r14-a14:
+Every individual has a set of these couples with an associated weight just passing the list of weights to the set_dictionary() method that returns the rule-action-weight triplets.
+During a match (for both training and testing) it selects the couples of rule-action that satisfy a certain situation (with test_conditions() method) and it picks one according to a weighted roulette-wheel selection, returned by voting() method. At training time adaptive() method is called to play a match with the individual, while at test time make_move() is called to do the same.
+The first called function is ES_1_plus_lambda() that for a certain number of epochs (EPISODES_TRAINING) it generates individuals (by perturbing the weights of the best solution with a Gaussian density function) and compare them to get the best. At every epoch the fitness() function is called in order to evaluate the individual passed as argument: it plays for a certain number of matches (EPISODES_TRAINING_FITNESS) against the Random player and it is evaluated by the percentage of wins on the number of games.
+There is a steady-state condition for which, if a better solution is not found, it skips the search of new individuals and take as good the last best individual.
+
+We have tested the ES player training it with several configurations. Many of these tests are against Random player changing some parameters like the number of episodes, epochs, individuals or exploration rate. A few tests were conducted training the agent against the Alpha-Beta player and we found that, even if it was trained for 2 epochs, it performs well against the Random player because it was trained with an more expert agent than Random agent.
+
 
 **usefull methods**
 

@@ -150,11 +150,11 @@ In particular the functions implemented are:
   
 **Results**
 
-- EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as firt
-  -![Screenshot](./results_images/
+- EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as firt </br>
+  ![Screenshot](./results_images/MC_200k_first.jpg)
 
-- EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as second
-  -
+- EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as second </br>
+  ![Screenshot](./results_images/MC_200k_second.jpg)
 
 
 ### Q-Learning

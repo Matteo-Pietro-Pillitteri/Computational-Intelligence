@@ -90,8 +90,11 @@ Also in this case it is possible to establish a depth where end our exploration.
 
 **Results**
 - depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+ - ![!Screenshot](./results_images/AlphaBeta_d2_30g.jpg)
+
 
 - depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+  - ![!Screenshot](./results_images/AlphaBeta_d2_30gg.jpg)
 
 - depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
 

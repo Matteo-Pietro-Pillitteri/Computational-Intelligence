@@ -106,7 +106,6 @@ Also in this case it is possible to establish a depth where end our exploration.
    - depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
     - ![!Screenshot](./results_images/AlphaBeta_d2_30g.jpg)
    
-   
    - depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
      - ![!Screenshot](./results_images/AlphaBeta_d2_30gg.jpg)
    
@@ -150,6 +149,13 @@ In particular the functions implemented are:
 - To keep the q table, we use a dictionary. For that we implement the `__hash__` and `__eq__` functions for the `MyGame` function so we can use those objects as part of the key. Additionally, we also use these functions to match elements that are symetries/rotations of the original board, for efficiency.
 **Results**
 
+- EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as firt
+  -
+
+- EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as second
+  -
+
+
 ### Q-Learning
 
 - For the Model-Free Q-Learning agent (`QPlayer`, found in `QLearning.ipynb`) we implemented an agent that learns to play the game by performing actions chosen through a epsilon-greedy stategy and is rewarded for each of them, allowing for it to later choose the actions that will lead to the best reward for each state in a game.
@@ -175,8 +181,8 @@ In particular the functions implemented are:
 
 **Results**
 
-- Episodes_training = 500k, 100 games
-  - 
+- EPISODES_TRAINING = 500k, 100 games
+  - ![Screenshot](./results_images/Q_Learning.jpg)
 
 
 ###  ES 1+λ
@@ -195,8 +201,54 @@ There is a steady-state condition for which, if a better solution is not found, 
 
 We have tested the ES player training it with several configurations. Many of these tests are against Random player changing some parameters like the number of episodes, epochs, individuals or exploration rate. A few tests were conducted training the agent against the Alpha-Beta player and we found that, even if it was trained for 2 epochs, it performs well against the Random player because it was trained with an more expert agent than Random agent.
 
-
 **usefull methods**
 
 **Results**
+
+
+- PLAYER 1
+     
+  
+
+   - EPISODES_TRAINING = 45, EPISODES_TRAINING_FITNESS = 35, EPISODES_GAME = 100, NUMBER_OF_RULES = 8 (commented 1,2, 10,11,12,13), LAMBDA = 17, INITIAL SIGMA = 0.2 , FINAL_SIGMA = 0.02, training against random, initialweights small random as the configuration of the final code:
+
+     Best_fitness =  0.6571428571428571
+
+
+     ES agent wins = 42%
+
+
+
+   - EPISODES_TRAINING = 110, EPISODES_TRAINING_FITNESS = 40, EPISODES_GAME = 100, NUMBER_OF_RULES = 8 (commented 1,2, 10,11,12,13), LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.02, training against random, initialweights small random as the configuration of the final code:
+
+   Best_fitness =  0.675
+   
+   
+   ES agent wins = from 41% to 48% 
+
+
+   - EPISODES_TRAINING = 60, EPISODES_TRAINING_FITNESS = 60, EPISODES_GAME = 100, NUMBER_OF_RULES = 9 (commented 2, 10,11,12,13), LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.02, training against random, initialweights small random as the configuration of the final code:
+
+   Best_fitness =  0.8166666666666667
+   
+   ES agent wins =  from 57%  to 61%
+
+
+   - EPISODES_TRAINING = 60, EPISODES_TRAINING_FITNESS = 70, EPISODES_GAME = 100, NUMBER_OF_RULES = 10 (commented 10,11,12,13), LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.05, training against random, initialweights small random as the configuration of the final code:
+
+     Best_fitness =  0.8571428571428571
+
+
+     ES agent wins =  69%
+
+
+    - EPISODES_TRAINING = 70, EPISODES_TRAINING_FITNESS = 80, EPISODES_GAME = 100, NUMBER_OF_RULES = 14, LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.08, training against random, initialweights small random as the configuration of the final code:
+
+      Best_fitness =  0.9625
+
+
+      ES agent wins =  94%
+
+
+
 

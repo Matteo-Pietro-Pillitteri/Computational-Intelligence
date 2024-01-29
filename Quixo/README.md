@@ -96,12 +96,14 @@ Also in this case it is possible to establish a depth where end our exploration.
 - depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
   - ![!Screenshot](./results_images/AlphaBeta_d2_30gg.jpg)
 
-- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+  - ![!Screenshot](./results_images/AlphaBeta_d3_30g.jpg)
 
-- depth = 4 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+- depth = 4 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+  - ![!Screenshot](./results_images/AlphaBeta_d4_30gg.jpg)
 
 - depth = 4 W=1, L=-1, 9 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 (around 25m)
-9 wins -> 100% win
+  - 9 wins -> 100% win 
 
 
 ### MonteCarlo RL

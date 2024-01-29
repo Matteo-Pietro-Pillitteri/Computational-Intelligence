@@ -147,10 +147,11 @@ In particular the functions implemented are:
   - it calculate all the possible symmetries of the board
  
 - To keep the q table, we use a dictionary. For that we implement the `__hash__` and `__eq__` functions for the `MyGame` function so we can use those objects as part of the key. Additionally, we also use these functions to match elements that are symetries/rotations of the original board, for efficiency.
+  
 **Results**
 
 - EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as firt
-  -
+  -![Screenshot](./results_images/
 
 - EPISODES_TRAINING = 200k, 100 games, Montecarlo Player as second
   -

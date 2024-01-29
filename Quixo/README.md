@@ -62,23 +62,34 @@ The evaluation of an intermediate node is possible thanks to the longest_sequenc
  
 
 **Results**
-As we said, we set a limit in depth. The following results represent the percentage of time in which our agent is winning against a Random Player with different depths. The number of games played is not so big, so you can not appreciate a lot the fact that if we explore more depth in the tree we can have better results.
+As we said, we set a limit in depth. The following results represent the percentage of time in which our agent is winning against a Random Player with different depths. The number of games played is not so big, so you can not appreciate a lot in some cases (for instance between _depth=1_ and _depth=2_) the fact that if we explore more depth in the tree we can have better results.
 
-- depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5:
-   - ![!Screenshot](./results_images/MixMax_d1_30g.jpg)
-
-- depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
-   - ![!Screenshot](./results_images/MixMax_d2_30g.jpg)
-
-- depth = 2 W=1, L=-1, 10 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
-   - ![!Screenshot](./results_images/MinMax_d2_10g.png)
-     
-- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
-   - ![!Screenshot](./results_images/MinMax_d3_30g.jpg)
-
-- depth = 2 W=1, L=-1, 5 games,ONE random game to decide the value of an intermediate node (3h around on Colab)
-   - ![!Screenshot](./results_images/MinMax_d2_5g.png)
-
+- ***Winning percentages***            
+   
+   - depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5:
+      - ![!Screenshot](./results_images/MixMax_d1_30g.jpg)
+   
+   - depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+      - ![!Screenshot](./results_images/MixMax_d2_30g.jpg)
+   
+   - depth = 2 W=1, L=-1, 10 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+      - ![!Screenshot](./results_images/MinMax_d2_10g.png)
+        
+   - depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+      - ![!Screenshot](./results_images/MinMax_d3_30g.jpg)
+   
+   - depth = 2 W=1, L=-1, 5 games,ONE random game to decide the value of an intermediate node (3h around on Colab)
+      - ![!Screenshot](./results_images/MinMax_d2_5g.png)
+   
+   
+- ***Time for each move***
+   
+   | Depth                            | Time for each move (maximum values)                 |
+   | -------------------------------- | ---------------------- |
+   | 1                                | 0.139 s                |
+   | 2                                | 4.398 s                |
+   | 3                                | 186.110 s              |
+   
 
 ### AlphaBetaPrunuing
 The code in the file Alpha_beta_pruning_quixo.ipynb is just an implementation of the MinMax algorithm but faster. It does not chnge the nature of the algorithm itself. The base idea is that one of __Pat Winston__ : "If you have an idea that is surely bad, don't take the time to see how trurly awful it is".
@@ -89,22 +100,35 @@ Also in this case it is possible to establish a depth where end our exploration.
 **Other usefull methods in MyGame Class**
 
 **Results**
-- depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
- - ![!Screenshot](./results_images/AlphaBeta_d2_30g.jpg)
 
+- ***Winning percentages***
+      
+   - depth = 1 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 
+    - ![!Screenshot](./results_images/AlphaBeta_d2_30g.jpg)
+   
+   
+   - depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+     - ![!Screenshot](./results_images/AlphaBeta_d2_30gg.jpg)
+   
+   - depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+     - ![!Screenshot](./results_images/AlphaBeta_d3_30g.jpg)
+   
+   - depth = 4 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
+     - ![!Screenshot](./results_images/AlphaBeta_d4_30gg.jpg)
+   
+   - depth = 4 W=1, L=-1, 9 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 (around 25m)
+     - 9 wins -> 100% win 
 
-- depth = 2 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
-  - ![!Screenshot](./results_images/AlphaBeta_d2_30gg.jpg)
-
-- depth = 3 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
-  - ![!Screenshot](./results_images/AlphaBeta_d3_30g.jpg)
-
-- depth = 4 W=1, L=-1, 30 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5
-  - ![!Screenshot](./results_images/AlphaBeta_d4_30gg.jpg)
-
-- depth = 4 W=1, L=-1, 9 games, for an intermediate node we have a heuristic function called longest_sequence and its returned value is normalized in order to have a value between -0.5 and +0.5 (around 25m)
-  - 9 wins -> 100% win 
-
+- ***Time for each move***
+   
+   | Depth                            | Time for each move (maximum values)                 |
+   | -------------------------------- | ---------------------- |
+   | 1                                | 0.233 s                |
+   | 2                                | 2.09 s                 |
+   | 3                                | 15.244 s               |
+   | 4                                | 111.433 s              |
+   | 5                                | 469.711 s              |
+   
 
 ### MonteCarlo RL
 The code in the file Quixo_MonteCarlo.ipynb it is possible to find a RL Agent that learns with a MonteCarlo approach.
@@ -150,6 +174,9 @@ In particular the functions implemented are:
 - To keep the q table, we use a dictionary. For that we implement the `__hash__` and `__eq__` functions for the `MyGame` function so we can use those objects as part of the key.
 
 **Results**
+
+- Episodes_training = 500k, 100 games
+  - 
 
 
 ###  ES 1+λ

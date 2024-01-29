@@ -23,7 +23,7 @@ Since we worked in four, for this project we decided to cover the main approache
 - ES 1+λ
 
 All these algorithms are written in Jupyter Notebooks (.ipynb). This allow us to better organize the work and to make it more readable. 
-The project required us to develop different Agents able to play Quixo. The provided template presents a Game Class with all the methods useful to do a match game against another Agent. The default opponet is a Random Player which strategy is to perform a random move starting from a random position in the table. 
+The project required us to develop different Agents able to play Quixo. The provided template presents a Game Class with all the methods useful to do a match game against another Agent. The default opponent is a Random Player which strategy is to perform a random move starting from a random position in the table. 
 
 We subclassed the ___Game Class___ in order to write some methods that are pretty useful to better visualize what is going on and to provide our agents functional tools. For doing it, we implement our  ___MyGame Class___. There some functions in this Class that are used in all the files, while others are specific for some agents. 
 Here a short overview of some methods of ___MyGame Class___ (Other functions are commented in the description of the specific approaches):
@@ -68,7 +68,7 @@ The evaluation of an intermediate node is possible thanks to the longest_sequenc
 | Otherwise      | Size of the agent's biggest sequence normalized to the interval [-0.5, 0.5] |
 
 
-**Other usefull methods in MyGame Class**
+**Other useful methods in MyGame Class**
 
 - `longest_sequence(self, player_id: int) -> int` 
   - It is implemented in the _MyGame Class_. It returns the length of the longest sequence of pieces of the same player.
@@ -109,8 +109,15 @@ The code in the file Alpha_beta_pruning_quixo.ipynb is just an implementation of
 Thus, instead of exploring the whole tree, this algorithm cuts off some branches if some conditions are satisfied. In particular it checks the values of two variables, alpha and beta: if one of them is higher or equal to the other the branch is cut. In this manner it is possible to proceed quickly in the exploration. As in the minimax approach, we recur to _minimax()_ function that presents the updating of some variables at the end of each maximization/minimization stage. On one hand during the maximization stage: best_score=max(score, best_score) and  alpha = max(alpha, score). On the other hand, in minimization stage: best_score = min(score, best_score), beta=min(beta, score)).Then there is a condition that checks if that branch has to be cut off or less (if beta <= alpha: break). 
 Also in this case it is possible to establish a depth where end our exploration.
 
+- Overview of the evaluation function in terms of "reward":
 
-**Other usefull methods in MyGame Class**
+| Condition      | Value |
+| -------------- | ----- |
+| The agent won  | +1    |
+| The agent lost | -1    |
+| Otherwise      | Size of the agent's biggest sequence normalized to the interval [-0.5, 0.5] |
+
+
 
 **Results**
 
@@ -150,9 +157,17 @@ We implemented a random game and kept track of all the states. Then we evaluate 
 value_dict[state] = value_dict[state] + epsilon * (final_reward - svalue_dict[state] 
 
 where the final_reward is the final state rating. If our player wins, he will receive a positive reward(**reinforcement**) otherwise a negative reward. The idea is therefore to build a dictionary of states with relative evaluation that then the the agent can follow to make dicisions. 
-In particular the functions implemented are: 
+ 
+- Overview of the evaluation function (_state_value()_) in terms of "reward":
 
-**Other usefull methods in MyGame Class**
+| Condition      | Value |
+| -------------- | ----- |
+| The agent won  | +1    |
+| The agent lost | -1    |
+| Otherwise      |  0    |
+
+
+**Other useful methods in MyGame Class**
 - `get_rotations(self)`
   - this function generate rotations of a game board
     
@@ -184,12 +199,12 @@ In particular the functions implemented are:
 | ------------------------------------ | ---------------------- |
 | Play a winning move                  | +1                     |
 | Play a loosing move                  | -1                     |
-| Increase own biggest sequence        | + 0.25 * size of board |
-| Decrease own biggest sequence        | - 0.25 * size of board |
-| Icrease opponent's biggest sequence  | - 0.25 * size of board |
-| Decrease opponent's biggest sequence | + 0.25 * size of board |
+| Increase own biggest sequence        | + sequence size / 5    |
+| Decrease own biggest sequence        | - sequence size / 5    |
+| Increase opponent's biggest sequence | - sequence size / 5    |
+| Decrease opponent's biggest sequence | + sequence size / 5    |
 
-**Other usefull methods in MyGame Class**
+**Other useful methods in MyGame Class**
 
 - To keep the q table, we use a dictionary. For that we implement the `__hash__` and `__eq__` functions for the `MyGame` function so we can use those objects as part of the key.
 
@@ -233,7 +248,7 @@ The first function to be called is *ES_1_plus_lambda()* that for a certain numbe
 
 There is a *steady-state condition* for which, if a better solution is not found in a certain number of epochs (defined by *TOLERANCE_EPOCHS*), it breaks the search of new individuals.
 
-**Other usefull methods in MyGame Class**
+**Other useful methods in MyGame Class**
 
 - `set_board(self, board)`
    - It is useful to set a particular board in a MyGame object.

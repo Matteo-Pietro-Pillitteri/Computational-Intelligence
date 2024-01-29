@@ -20,7 +20,7 @@ Since we worked in four, for this project we decided to cover the main approache
 - AlphaBetaPruning
 - MonteCarlo RL
 - Q-Learning
-- ES 1+λ
+- ES 1+λ: one implementation against Random Agent and one against AlphaBetaPruning Agent
 
 All these algorithms are written in Jupyter Notebooks (.ipynb). This allow us to better organize the work and to make it more readable. 
 The project required us to develop different Agents able to play Quixo. The provided template presents a Game Class with all the methods useful to do a match game against another Agent. The default opponent is a Random Player which strategy is to perform a random move starting from a random position in the table. 

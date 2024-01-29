@@ -25,7 +25,7 @@ Since we worked in four, for this project we decided to cover the main approache
 All these algorithms are written in Jupyter Notebooks (.ipynb). This allow us to better organize the work and to make it more readable. 
 The project required us to develop different Agents able to play Quixo. The provided template presents a Game Class with all the methods useful to do a match game against another Agent. The default opponet is a Random Player which strategy is to perform a random move starting from a random position in the table. 
 
-We subclassed the ___Game Class___ in order to write some methods that are pretty useful for better visualize what is going on and for providing our agents useful tools. For doing it, we implement our  ___MyGame Class___. There some functions in this Class that are used in all the files, while others are specific for some agents. 
+We subclassed the ___Game Class___ in order to write some methods that are pretty useful to better visualize what is going on and to provide our agents functional tools. For doing it, we implement our  ___MyGame Class___. There some functions in this Class that are used in all the files, while others are specific for some agents. 
 Here a short overview of some methods of ___MyGame Class___ (Other functions are commented in the description of the specific approaches):
 
 - `get_possible_moves(self, game: "MyGame") -> list[tuple[tuple[int, int], Move]]`
@@ -35,11 +35,24 @@ Here a short overview of some methods of ___MyGame Class___ (Other functions are
    - Prints the board. '-' are neutral pieces, 'O' are pieces of player 0, 'X' pieces of player 1. 
 
 - `is_valid(self, from_pos: tuple[int, int], slide: Move, player_id: int) -> bool`
-   - It returns a Boolean value that tells us if a move for a player is valid or not. It is useful for _get_possible_moves_ method.
+   - It returns a Boolean value that tells us if a move for a player is valid or not. It is useful for _get_possible_moves()_ method.
 
 - `move(self, from_pos: tuple[int, int], slide: Move, player_id: int) -> bool`
-   - Just to call __move() method from Game class; the method is private, but in MyGame we use it as public.
+   - Just to call *__move()* method from Game class; the method is private, but in MyGame we use it as public.
 
+We provide a folder in this repository named *pretrained_agents* that contains:
+- **Q_Learning_agent**: it includes the file of the trained q-table splitted into three small .rar files. You have to extract all of them in one single file. 
+- **es_agents**: it includes pretrained agents based on different parameters configuration. <br/>
+  - For Quixo_ES.ipynb the pretrained files are the following:
+    - _lambda_20_training_60_training_fitness_60_rules_9_initialsigma_0.35_random.pkl_
+    - _lambda_20_training_70_training_fitness_80_rules_14_initialsigma_0.35_final_0.08_random.pkl_
+
+  - For Quixo_ES_alpha_beta.ipynb:
+    - _lambda_10_training_2_fitness_5_rules_14__highersigma_alphabeta.pkl
+  
+- **mc_agents** : it includes two trained dictionaries. One computed by our player starting as first and one as second. These files are in .rar format, **please unzip them**.
+
+All the pretrained files must be located in the same folder in which there is the correspondent algorithm. In the notebook files in which you have the possibility to test the algorithm with the pretrained configuration, **please pay attention to the path constant**.
 
 ### MinMax 
 The code in the file Quixo_Minmax.ipynb proposed an Agent able to take a move after exploring the tree game according to the minmax function. This is a recursive function which goal is to maximize the minumum of the reward. What does it means? In the MinMax algorithm the agent starts from the leaf ot the tree and goes up  maximizing and minimizing level by level. Since the agent is expecting that the opponent plays in an optimal way, it search the best move to apply by exploring the game tree. The applied move is always the _best_move_ for our Agent in the worst possible scenario. Since the _branching factor_ is huge and the tree is very depth (with respect to more simple game such as _Tic_Tac_Toe_) we have to set a kind of _hard cut off_ for limiting the depth of the search at a certain level. In fact, we have like $1.7 * 10^{12}$ configurations. So the complexity grows and it is very time consuming exploring the whole tree. 

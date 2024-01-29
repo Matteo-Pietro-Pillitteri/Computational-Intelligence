@@ -186,24 +186,48 @@ In particular the functions implemented are:
 
 
 ###  ES 1+λ
-The code in the file Quixo_ES.ipynb
-The Evolutionary Strategy is an approach that allows to select the individual that performs better in a specific task. In our case we are looking to the best one that plays well the match against Random Player. We adopted a (1+λ)-ES that in each epoch generates λ offspring from a parent and that evaluates all of them with a fitness function. How does our agent work? It has a list of rule-action couples, each of one has a weight that represents a probability.
-The list of rule-action couples is the following, where some couples are more specific than others:
-- r1-a1: if there is a row without a cube with agent's face, then it pushes the cube there (it is a guarantee that on every row there is at least one agent's cube)
-- r2-a2: if there is a column without a cube with agent's face, then it pushes the cube there (it is a guarantee that on every column there is at least one agent's cube)
-- r3-a3: 
-...
-- r14-a14:
-Every individual has a set of these couples with an associated weight just passing the list of weights to the set_dictionary() method that returns the rule-action-weight triplets.
-During a match (for both training and testing) it selects the couples of rule-action that satisfy a certain situation (with test_conditions() method) and it picks one according to a weighted roulette-wheel selection, returned by voting() method. At training time adaptive() method is called to play a match with the individual, while at test time make_move() is called to do the same.
-The first called function is ES_1_plus_lambda() that for a certain number of epochs (EPISODES_TRAINING) it generates individuals (by perturbing the weights of the best solution with a Gaussian density function) and compare them to get the best. At every epoch the fitness() function is called in order to evaluate the individual passed as argument: it plays for a certain number of matches (EPISODES_TRAINING_FITNESS) against the Random player and it is evaluated by the percentage of wins on the number of games.
-There is a steady-state condition for which, if a better solution is not found, it skips the search of new individuals and take as good the last best individual.
+The code in the file Quixo_ES.ipynb describes the behaviour of our ES agent.
 
-We have tested the ES player training it with several configurations. Many of these tests are against Random player changing some parameters like the number of episodes, epochs, individuals or exploration rate. A few tests were conducted training the agent against the Alpha-Beta player and we found that, even if it was trained for 2 epochs, it performs well against the Random player because it was trained with an more expert agent than Random agent.
+The **Evolutionary Strategy** is an approach that allows to select the individual that performs better in a specific task. In our case we are looking to the best  configuration of weights for the actions with which our agent plays against the _Random Player_. We adopted a **(1+λ)-ES** that in each epoch generates λ offspring from a parent and that evaluates all of them with a *fitness function*. We use a dictionary of *rule- (action-weight)*. Each of these *weights*  represents a probability.  The *set_dictionary()* method is used to zip the _CONDITIONS_ and _ACTIONS_ lists to form the *rule-action couples*.
 
-**usefull methods**
+The **list of rule-action couples** is the following, where some couples are more specific than others:
+
+- **r1-a1**: if there is a *row* without a cube with agent's face, then it pushes the cube there (it is a guarantee that on every row there is at least one agent's cube)
+- **r2-a2**: if there is a *column* without a cube with agent's face, then it pushes the cube there (it is a guarantee that on every column there is at least one agent's cube)
+- **r3-a3**: if the *agent* is doing 5 in a *row* (where 4 of its cubes are consecutive), then it pushes there a cube in order to do the winning move
+- **r4-a4**: if the *agent* is doing 5 in a *column* (where 4 of its cubes are consecutive), then it pushes there a cube in order to do the winning move
+- **r5-a5**: if the *agent* is doing 5 in a *main/secondary diagonal* (where 4 of its cubes are consecutive), then it pushes there a cube in order to do the winning move
+- **r6-a6**: if the *opponent* is doing 5 in a *row* (where 4 of its cubes are consecutive), then the *agent* pushes there a cube with its face in order to block opponent's possible winning move
+- **r7-a7**: if the *opponent* is doing 5 in a *column* (where 4 of its cubes are consecutive), then the *agent* pushes there a cube with its face in order to block opponent's possible winning move
+- **r8-a8**: *unoptimal move*! It represents a *bad rule* that brings to a lose. Indeed, if the *opponent* is going to do 5 in a *row/column/main diagonal/secondary diagonal*, the agent *DOES NOT block* the winning move (if and only if at the extremes there are cubes with our face or without face)
+- **r9-a9**: if the *opponent* is doing 5 in a *main/secondary diagonal* (where 4 of its cubes are consecutive), then the *agent* pushes there a cube with its face in order to block opponent's possible winning move
+- **r10-a10**: if in one *row* there are *at least 3 cubes* with *agent*'s symbol (not necessarly consecutive), then it tries to put a cube there
+- **r11-a11**: if in one *column* there are *at least 3 cubes* with *agent*'s symbol (not necessarly consecutive), then it tries to put a cube there
+- **r12-a12**: if in one *row* there are *at least 3 cubes* with *opponent*'s symbol (not necessarly consecutive), then the agent tries to put a cube there to block opponent's possible winning move
+- **r13-a13**: if in one *column* there are *at least 3 cubes* with *opponent*'s symbol (not necessarly consecutive), then the agent tries to put a cube there to block opponent's possible winning move
+- **r14-a14**: *the simplest couple rule-action*! If the agent finds an available cube or with its face on the perimeter, it does a random move from those allowed
+
+In the file there is a code cell called *TESTER RULE-ACTIONS* useful where we tested the effectiveness of rule-action couples: we set the board that we wanted to test with *MyGame.set_board()* method and then we applied the desired couple in order to understand if it respects the condition (value returned by *rule()*) and to see the applied move from the current board in the future one (applying *MyGame.move()* with the parameters returned by *action\[0\]()*).
+
+During a *match* (for both training and testing) the agent selects couples of rule-action that satisfies a certain situation (with *test_conditions()* method) and it picks one according to a *weighted roulette-wheel selection*, returned by *voting()* method. 
+
+At
+- **training time**, *adaptive()* method is called to play a match with the given individual
+- **test time**, *make_move()* is called to do the same but with the best (individual) configuration of weights found so far.
+
+The first function to be called is *ES_1_plus_lambda()* that for a certain number of epochs (*EPISODES_TRAINING*) it generates individuals (by perturbing the weights of the best solution found so far, with a normal distribution) and compare them to get the best. At each epoch the *fitness()* function is called in order to evaluate the individual passed as argument: it plays for a certain number of matches (*EPISODES_TRAINING_FITNESS*) against the Random player and it is evaluated by its percentage of wins.
+
+There is a *steady-state condition* for which, if a better solution is not found in a certain number of epochs (defined by *TOLERANCE_EPOCHS*), it breaks the search of new individuals.
+
+**Other usefull methods in MyGame Class**
+
+- `set_board(self, board)`
+   - It is useful to set a particular board in a MyGame object.
 
 **Results**
+
+**Results**
+We have tested the ES player training it with several configurations and playing with it as first or second player. Many of these tests were against Random player changing some parameters like the number of episodes (*EPISODES_TRAINING_FITNESS*), epochs (*EPISODES_TRAINING*), individuals (*λ*) or exploration rate (*initial_σ* and *final_σ*).
 
 
 - **PLAYER 1**
@@ -252,6 +276,8 @@ We have tested the ES player training it with several configurations. Many of th
       ![Screenshot](./results_images/win_70_80_rules_14_lambda_20.png)
 
 - **Player 2**
+A few tests were conducted training the agent against the Alpha-Beta player and we found that, even if it was trained for 2 epochs, it performs well against the Random player because it was trained with an more expert agent than Random agent. In this case our agent played as second player.
+
 
    - EPISODES_TRAINING = 2, EPISODES_TRAINING_FITNESS = 5, EPISODES_GAME = 100, NUMBER_OF_RULES = 14, LAMBDA = 10, INITIAL SIGMA = 0.2 , FINAL_SIGMA = 0.02, training against Alpha Beta pruning Player, initial weights small random as the configuration of the final code:
 

@@ -40,7 +40,7 @@ Here a short overview of some methods of ___MyGame Class___ (Other functions are
 - `move(self, from_pos: tuple[int, int], slide: Move, player_id: int) -> bool`
    - Just to call *__move()* method from Game class; the method is private, but in MyGame we use it as public.
 
-We provide a folder in this repository named *pretrained_agents* that contains:
+We provide a folder in this repository named *pretrained_agents*:
 - **Q_Learning_agent**: it includes the file of the trained q-table splitted into three small .rar files. You have to extract all of them in one single file. 
 - **es_agents**: it includes pretrained agents based on different parameters configuration. <br/>
   - For Quixo_ES.ipynb the pretrained files are the following:
@@ -48,15 +48,15 @@ We provide a folder in this repository named *pretrained_agents* that contains:
     - _lambda_20_training_70_training_fitness_80_rules_14_initialsigma_0.35_final_0.08_random.pkl_
 
   - For Quixo_ES_alpha_beta.ipynb:
-    - _lambda_10_training_2_fitness_5_rules_14__highersigma_alphabeta.pkl
+    - _lambda_10_training_2_fitness_5_rules_14__highersigma_alphabeta.pkl_
   
 - **mc_agents** : it includes two trained dictionaries. One computed by our player starting as first and one as second. These files are in .rar format, **please unzip them**.
 
-All the pretrained files must be located in the same folder in which there is the correspondent algorithm. In the notebook files in which you have the possibility to test the algorithm with the pretrained configuration, **please pay attention to the path constant**.
+All the pretrained files must be located in the same folder in which there is the correspondent algorithm. In the notebook files **please pay attention to the path constant**.
 
 ### MinMax 
-The code in the file Quixo_Minmax.ipynb proposed an Agent able to take a move after exploring the tree game according to the minmax function. This is a recursive function which goal is to maximize the minumum of the reward. What does it means? In the MinMax algorithm the agent starts from the leaf ot the tree and goes up  maximizing and minimizing level by level. Since the agent is expecting that the opponent plays in an optimal way, it search the best move to apply by exploring the game tree. The applied move is always the _best_move_ for our Agent in the worst possible scenario. Since the _branching factor_ is huge and the tree is very depth (with respect to more simple game such as _Tic_Tac_Toe_) we have to set a kind of _hard cut off_ for limiting the depth of the search at a certain level. In fact, we have like $1.7 * 10^{12}$ configurations. So the complexity grows and it is very time consuming exploring the whole tree. 
-The _minimax()_ method is our main method that maximizes agent's reward and minimizes opponent's one. It is called by the _best_move()_ method that iterates through all possible moves, calculates their scores using the minimax function, and returns the move with the highest score. The condition stop is satisfied if it finds the terminal node that brings to a win or to a lose or if it reached a certain depth. When the game stop  a heuristic function is called and itreturns a value between -0.5 and +0.5 if it is evaluating an intermediate node, while it returns +1 if our Agent is the winner or -1 if the opponent wins.
+The code in the file Quixo_Minmax.ipynb proposed an Agent able to take a move after exploring the tree game according to the minmax function. This is a recursive function which goal is to maximize the minumum of the reward. What does it means? In the MinMax algorithm the agent starts from the leaf ot the tree and goes up  maximizing and minimizing level by level. Since the agent is expecting that the opponent plays in an optimal way, it searches the best move to apply by exploring the game tree. The applied move is always the _best_move_ for our Agent in the worst possible scenario. Since the _branching factor_ is huge and the tree is very deep (with respect to more simple game such as _Tic_Tac_Toe_) we have to set a kind of _hard cut off_ for limiting the depth of the search at a certain level. In fact, we have like $1.7 * 10^{12}$ configurations. So the complexity grows and it is very time consuming exploring the whole tree. 
+The _minimax()_ method is our main method that maximizes agent's reward and minimizes opponent's one. It is called by the _best_move()_ method that iterates through all possible moves, calculates their scores using the minimax function, and returns the move with the highest score. The condition stop is satisfied if it finds the terminal node that brings to a win or to a lose or if it reaches a predefined depth. When the game stop, a heuristic function is called and it returns a value between -0.5 and +0.5 if it is evaluating an intermediate node, while it returns +1 if our Agent is the winner or -1 if the opponent wins.
 The evaluation of an intermediate node is possible thanks to the longest_sequence function.
 
 - Overview of the evaluation function in terms of "reward":
@@ -105,8 +105,8 @@ As we said, we set a limit in depth. The following results represent the percent
    
 
 ### AlphaBetaPrunuing
-The code in the file Alpha_beta_pruning_quixo.ipynb is just an implementation of the MinMax algorithm but faster. It does not chnge the nature of the algorithm itself. The base idea is that one of __Pat Winston__ : "If you have an idea that is surely bad, don't take the time to see how trurly awful it is".
-Thus, instead of exploring the whole tree, this algorithm cuts off some branches if some conditions are satisfied. In particular it checks the values of two variables, alpha and beta: if one of them is higher or equal to the other the branch is cut. In this manner it is possible to proceed quickly in the exploration. As in the minimax approach, we recur to _minimax()_ function that presents the updating of some variables at the end of each maximization/minimization stage. On one hand during the maximization stage: best_score=max(score, best_score) and  alpha = max(alpha, score). On the other hand, in minimization stage: best_score = min(score, best_score), beta=min(beta, score)).Then there is a condition that checks if that branch has to be cut off or less (if beta <= alpha: break). 
+The code in the file Alpha_beta_pruning_quixo.ipynb is a variant of the MinMax algorithm, but faster. It does not change the nature of the algorithm itself. The base idea is that one of __Pat Winston__ : "If you have an idea that is surely bad, don't take the time to see how trurly awful it is".
+Thus, instead of exploring the whole tree, this algorithm cuts off some branches if some conditions are satisfied. In particular, it checks the values of two variables, alpha and beta: if one of them is higher or equal to the other, the branch is cut. In this manner, it is possible to proceed quickly in the exploration. As in the minimax approach, we recur to _minimax()_ function that presents the updating of some variables at the end of each maximization/minimization stage. On one hand during the maximization stage: best_score=max(score, best_score) and  alpha = max(alpha, score). On the other hand, in minimization stage: best_score = min(score, best_score), beta=min(beta, score)). Then, there is a condition that checks if that branch has to be cut off or less (if beta <= alpha: break). 
 Also in this case it is possible to establish a depth where end our exploration.
 
 - Overview of the evaluation function in terms of "reward":
@@ -116,7 +116,6 @@ Also in this case it is possible to establish a depth where end our exploration.
 | The agent won  | +1    |
 | The agent lost | -1    |
 | Otherwise      | Size of the agent's biggest sequence normalized to the interval [-0.5, 0.5] |
-
 
 
 **Results**
@@ -150,13 +149,13 @@ Also in this case it is possible to establish a depth where end our exploration.
    
 
 ### MonteCarlo RL
-The code in the file Quixo_MonteCarlo.ipynb it is possible to find a RL Agent that learns with a MonteCarlo approach.
-The Monte Carlo method for reinforcement learning is an episodic learning algorithm that learns directly from episodes without any prior knowledge. It is used for estimating the value of states.
-We implemented a random game and kept track of all the states. Then we evaluate them using the following expression: 
+In the file Quixo_MonteCarlo.ipynb it is possible to find a RL Agent that learns with a MonteCarlo approach.
+The Monte Carlo method for reinforcement learning is a learning algorithm that learns directly from the environment without any prior knowledge. It is used for estimating the value of states.
+We implemented a random game and then we keep track of all the states. Then we evaluate them using the following expression: 
 
-value_dict[state] = value_dict[state] + epsilon * (final_reward - svalue_dict[state] 
+`value_dict[state] = value_dict[state] + epsilon * (final_reward - value_dict[state])`
 
-where the final_reward is the final state rating. If our player wins, he will receive a positive reward(**reinforcement**) otherwise a negative reward. The idea is therefore to build a dictionary of states with relative evaluation that then the the agent can follow to make dicisions. 
+where the _final_reward_ is the final state rating. If our player wins, he will receive a positive reward(**reinforcement**) otherwise a negative reward. The idea is therefore to build a dictionary of states with relative evaluation that the agent can check to make decisions. 
  
 - Overview of the evaluation function (_state_value()_) in terms of "reward":
 
@@ -187,11 +186,11 @@ where the final_reward is the final state rating. If our player wins, he will re
 
 ### Q-Learning
 
-- For the Model-Free Q-Learning agent (`QPlayer`, found in `QLearning.ipynb`) we implemented an agent that learns to play the game by performing actions chosen through a epsilon-greedy stategy and is rewarded for each of them, allowing for it to later choose the actions that will lead to the best reward for each state in a game.
+For the Model-Free Q-Learning agent (`QPlayer`, found in `Quixo_QLearning.ipynb`) we implemented an agent that learns to play by performing actions chosen through a epsilon-greedy stategy. It is rewarded for each of them (actions), allowing to later choose the actions that will lead to the best reward for each state in a game.
 
-- For each action it performs, the q-table is updated using the formula $Q(s_t, a_t) \leftarrow (1 - \alpha) * Q(s_t, a_t) + \alpha * (r + \gamma * max_a(s_{t+1}, a_{t + 1}))$.
+For each action it performs, the q-table is updated using the formula $Q(s_t, a_t) \leftarrow (1 - \alpha) * Q(s_t, a_t) + \alpha * (r + \gamma * max_a(s_{t+1}, a_{t + 1}))$.
   
-- As quixo is a two-player game, we need to simulate the opponent's moves as part of the environment, and, only then, update the table. To approach that, we consider the start of the agent's turn to be $s_t$, which transitions to state $s_{t+1}$ after the agent's action. Then, we simmulate the opponent's action, transitioning to state $s_{t + 2}$, where we finally update the table in respect to $s_t$.
+Since Quixo is a two-player game, we need to simulate the opponent's moves as part of the environment, and, only then, update the table. To approach that, we consider the start of the agent's turn to be $s_t$, which transitions to state $s_{t+1}$ after the agent's action. Then, we simmulate the opponent's action, transitioning to state $s_{t + 2}$, where we finally update the table in respect to $s_t$.
 
 - Our reward function is defined as follows:
 

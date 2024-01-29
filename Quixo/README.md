@@ -213,45 +213,45 @@ We have tested the ES player training it with several configurations. Many of th
    - EPISODES_TRAINING = 45, EPISODES_TRAINING_FITNESS = 35, EPISODES_GAME = 100, NUMBER_OF_RULES = 8 (commented 1,2, 10,11,12,13), LAMBDA = 17, INITIAL SIGMA = 0.2 , FINAL_SIGMA = 0.02, training against random, initialweights small random as the configuration of the final code:
    - 
      - Best_fitness =  0.6571428571428571
-       ![Screenshot](./45_35_rules_8_lambda_17.jpg)
+     ![Screenshot](./results_images/45_35_rules_8_lambda_17.png)
 
      - ES agent wins = 42%
-       ![Screenshot](./win_45_35_rules_8_lambda_17.jpg)
+     ![Screenshot](./results_images/win_45_35_rules_8_lambda_17.png)
 
 
    - EPISODES_TRAINING = 110, EPISODES_TRAINING_FITNESS = 40, EPISODES_GAME = 100, NUMBER_OF_RULES = 8 (commented 1,2, 10,11,12,13), LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.02, training against random, initialweights small random as the configuration of the final code:
 
    - Best_fitness =  0.675
-      ![Screenshot](./110_40_rules_8_lambda_20.jpg)
+   ![Screenshot](./results_images/110_40_rules_8_lambda_20.png)
    
    - ES agent wins = from 41% to 48% 
-      ![Screenshot](./win_110_40_rules_8_lambda_20.jpg)
+   ![Screenshot](./results_images/win_110_40_rules_8_lambda_20.png)
 
 
    - EPISODES_TRAINING = 60, EPISODES_TRAINING_FITNESS = 60, EPISODES_GAME = 100, NUMBER_OF_RULES = 9 (commented 2, 10,11,12,13), LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.02, training against random, initialweights small random as the configuration of the final code:
 
    - Best_fitness =  0.8166666666666667
-      ![Screenshot](./60_60_rules_9_lambda_20.jpg)
+   ![Screenshot](./results_images/60_60_rules_9_lamda_20.png)
    
    - ES agent wins =  from 57%  to 61%
-       ![Screenshot](./win_60_60_rules_9_lambda_20.jpg)
+   ![Screenshot](./results_images/win_60_60_rules_9_lambda_20.png)
 
 
    - EPISODES_TRAINING = 60, EPISODES_TRAINING_FITNESS = 70, EPISODES_GAME = 100, NUMBER_OF_RULES = 10 (commented 10,11,12,13), LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.05, training against random, initialweights small random as the configuration of the final code:
 
      - Best_fitness =  0.8571428571428571
-       ![Screenshot](./60_70_rules_10_lambda_20.jpg)
+     ![Screenshot](./results_images/60_70_rules_10_lambda_20.png)
 
      - ES agent wins =  69%
-       ![Screenshot](./win_60_70_rules_10_lambda_20.jpg)
+     ![Screenshot](./results_images/win_60_70_rules_10_lambda_20.png)
 
     - EPISODES_TRAINING = 70, EPISODES_TRAINING_FITNESS = 80, EPISODES_GAME = 100, NUMBER_OF_RULES = 14, LAMBDA = 20, INITIAL SIGMA = 0.35 , FINAL_SIGMA = 0.08, training against random, initialweights small random as the configuration of the final code:
 
       - Best_fitness =  0.9625
-        ![Screenshot](./70_80_rules_14_lambda_20.jpg)
+      ![Screenshot](./results_images/70_80_rules_14_lambda_20.png)
 
       - ES agent wins =  94%
-         ![Screenshot](./win_70_80_rules_14_lambda_20.jpg)
+      ![Screenshot](./results_images/win_70_80_rules_14_lambda_20.png)
 
 
 

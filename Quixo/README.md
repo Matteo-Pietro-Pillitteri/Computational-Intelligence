@@ -256,11 +256,13 @@ We have tested the ES player training it with several configurations. Many of th
    - EPISODES_TRAINING = 2, EPISODES_TRAINING_FITNESS = 5, EPISODES_GAME = 100, NUMBER_OF_RULES = 14, LAMBDA = 10, INITIAL SIGMA = 0.2 , FINAL_SIGMA = 0.02, training against Alpha Beta pruning Player, initial weights small random as the configuration of the final code:
 
      - Best_fitness = 0.6 (1 hour around on Google Colab)  <br />
-
+     ![Screenshot](./results_images/2_5_rules_14_lambda_10.png)
 
      - ES agent wins: 84% around of the games against Random Player  <br />
+     ![Screenshot](./results_images/win_2_5_rules_14_lambda_10_against_random.png)
 
      - Es agent wins: 10% around against Alpha Beta player  <br />
+     ![Screenshot](./results_images/win_2_5_rules_14_lambda_10_against_alpha.png)
 
 
 
